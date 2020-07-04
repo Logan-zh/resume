@@ -37,7 +37,7 @@ let vue=new Vue({
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.information').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').scrollTop+133)==document.querySelector('.main').offsetHeight){
+                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.information').offsetTop/10))){
@@ -62,7 +62,7 @@ let vue=new Vue({
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.exp').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').scrollTop+133)==document.querySelector('.main').offsetHeight){
+                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.exp').offsetTop/10))){
@@ -87,7 +87,7 @@ let vue=new Vue({
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.skills').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').scrollTop+133)==document.querySelector('.main').offsetHeight){
+                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.skills').offsetTop/10))){
@@ -112,7 +112,7 @@ let vue=new Vue({
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.education').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').scrollTop+133)==document.querySelector('.main').offsetHeight){
+                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.education').offsetTop/10))){
@@ -137,7 +137,7 @@ let vue=new Vue({
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.portfolio').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').scrollTop+133)==document.querySelector('.main').offsetHeight){
+                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.portfolio').offsetTop/10))){
@@ -181,7 +181,6 @@ let vue=new Vue({
         fetch('api/intro.php?aut=1',{method:'GET'}).then(res=>{
             return res.json()
         }).then(res=>{
-            console.log(res);
             this.information=res.information;
             this.experience=res.experience;
             this.portfolio=res.portfolio;

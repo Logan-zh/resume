@@ -110,7 +110,7 @@ CREATE TABLE `information` (
 --
 
 INSERT INTO `information` (`id`, `name`, `image`, `email`, `phone`, `birthday`, `address`, `Introduction`, `sex`) VALUES
-(1, '莊逸夫', 'image/icon.jpg', 'towkrlc@gmail.com', 985490389, '1995-02-15', '新北市板橋區', 'HI 我是莊逸夫，目前在職訓中心受訓，期望成為網頁程式工程師。', '男');
+(1, '莊逸夫', 'icon.jpg', 'towkrlc@gmail.com', 985490389, '1995-02-15', '新北市板橋區', 'HI 我是莊逸夫，目前在職訓中心受訓，期望成為網頁程式工程師。', '男');
 
 -- --------------------------------------------------------
 

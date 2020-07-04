@@ -17,9 +17,9 @@
     <div class="container">
         <div class="row justify-content-center" v-if="information">
             <div class="col-3 row flex-column align-items-center introduction">
-                <div class="icon"><img src="image/icon.jpg"></div>
+                <div class="icon"><img v-bind:src="('image/'+information[0].image)"></div>
                 <div class="name"><h4><b>{{information[0].name}}</b></h4></div>
-                <div class="title">PHP網頁工程師</div>
+                <div class="title">{{information[0].title}}</div>
                 <div class="hr"></div>
                 <div class="text">{{information[0].Introduction}}</div>
                 <div class="hr"></div>

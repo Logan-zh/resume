@@ -1,0 +1,56 @@
+database 
+
+resume
+	Contact Information
+		id	(int 20)
+		name	(var 16)
+		email	(var 32)
+	basic information
+		phone	(int 16)
+		birthday(var 64)
+		address	(var 32)
+	Introduction
+		Introduction (var 64)
+
+JobConditions 
+	conditions list
+		id	(int 10)
+		job title (var 32)
+
+Skill
+		id	(int)
+		name	(var)
+		sort	(var)
+
+experience
+	experience	btn( add del display ) 
+		id	(int 10)
+		company	(var 64)
+		JobTitle(var 32)
+		content (text )
+		start	(date )
+		end	(date )
+		display (int  1)
+		...
+
+
+Portfolio
+			btn( add del display )
+		id
+		title
+		url
+		simpleIntroduction
+		display	(int  1)
+
+Autobiographical
+			btn( add del display )
+		id	(int 10)
+		content	(text  )
+		display	(int  1)
+Picture
+			btn( add del display )
+		id	(int 10)
+		name	(var 32)
+		display	(int  1)
+
+

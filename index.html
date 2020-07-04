@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+    <script src="js/vue.js"></script>
+    <title>簡歷</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center" v-if="information">
+            <div class="col-3 row flex-column align-items-center introduction">
+                <div class="icon"><img src="image/icon.jpg"></div>
+                <div class="name"><h4><b>{{information[0].name}}</b></h4></div>
+                <div class="title">PHP網頁工程師</div>
+                <div class="hr"></div>
+                <div class="text">{{information[0].Introduction}}</div>
+                <div class="hr"></div>
+                <div class="link">
+                    <a href="https://github.com/Logan-zh/"><i class="fab fa-github"></i></a>
+                    <a v-bind:href="('mailto:'+information[0].email)"><i class="far fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="col-8 main row justify-content-center">
+                <div class="row">
+                    <div class="information col-12 flex-column row align-items-center" v-if="informationShow">
+                        <h3>個人資料</h3>
+                        <div class="table">
+                            <div class="tr">
+                                <div class="td">姓名</div>
+                                <div class="td">{{information[0].name}}</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">性別</div>
+                                <div class="td">{{information[0].sex}}</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">生日 / 年齡</div>
+                                <div class="td">{{information[0].birthday.substr(0,7)}} / {{(2020-information[0].birthday.substr(0,4))}}歲</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">居住地</div>
+                                <div class="td">{{information[0].address}}</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">聯絡方式</div>
+                                <div class="td">
+                                    <div><i class="fas fa-mobile-alt"></i>：0{{information[0].phone}}</div>
+                                    <div><i class="far fa-envelope"></i>：{{information[0].email}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills col-12 flex-column row align-items-center" v-if="skillSShow">
+                        <h3>技能</h3>
+                        <div class="table">
+                            <div class="tr" v-for="(Sitem,index) in skillS">
+                                <div class="td">{{Sitem.sort}}</div>
+                                <div class="td" v-for="(item,index) in skill" v-if="(item.sort==Sitem.sort && item.display==1)">{{item.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exp col-12 row align-items-center" v-if="experienceShow">
+                        <h3>工作經驗</h3>
+                        <div class="expBox" v-for="(item,index) in experience">
+                            <div class="icon"><img v-bind:src="(item.img!='')?('image/'+item.img):('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png')"></div>
+                            <div class="list">
+                                <div class="listTitle">公司：</div><div class="companyName">{{item.company}}</div>
+                            </div>
+                            <div class="list">
+                                <div class="listTitle">職稱：</div><div class="JobTitle">{{item.JobTitle}}</div>
+                            </div>
+                            <div class="list">
+                                <div class="listTitle">經驗：</div><div class="ex">{{item.content}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="education col-12 row align-items-center" v-if="eduShow">
+                        <h3>學歷</h3>
+                        <div class="eduBox" v-for="(item,index) in edu">
+                            <div class="icon"><img v-bind:src="(item.img!='')?('image/'+item.img):'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'"></div>
+                            
+                            <div class="list">
+                                <div class="listTitle">學校：</div><div class="schoolName">{{item.school}}</div>
+                            </div>
+                            <div class="list">
+                                <div class="listTitle">學歷：</div><div class="department">{{item.department}} {{item.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio col-12 row align-items-center" v-if="portfolioShow">
+                        <h3>作品集</h3>
+                        <div class="portBox" v-for="(item,index) in portfolio">
+                            <div class="list">
+                                <div class="icon"><img v-bind:src="('image/'+item.image)"></div>
+                            </div>
+                            <div class="list">
+                                <div class="title"><a v-bind:href="item.url">{{item.title}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="condition col-12 row align-items-center" v-if="jbconShow">
+                        <h3>求職條件</h3>
+                        <div class="table">
+                            <div class="tr">
+                                <div class="td">期望職稱：</div>
+                                <div class="td">{{jbcon[0].title}}</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">期望性質：</div>
+                                <div class="td">{{jbcon[0].kind}}</div>
+                            </div>
+                            <div class="tr">
+                                <div class="td">期望地點：</div>
+                                <div class="td">{{jbcon[0].place}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="image col-12 row align-items-center" v-if="imgShow">
+                        <h3>圖片區</h3>
+                        <img v-for="(item ,index) in img" v-bind:src="'image/'+item.name">
+                    </div>
+
+                </div>
+            </div>
+            <div class="menu col-1">
+                <div class="menu-item"><div class="in" v-on:click="min"><i class="far fa-address-card"></i></div></div>
+                <div class="menu-item"><div class="sk" v-on:click="msk"><i class="fas fa-tools"></i></div></div>
+                <div class="menu-item"><div class="ex" v-on:click="mex"><i class="fas fa-briefcase"></i></div></div>
+                <div class="menu-item"><div class="ed" v-on:click="med"><i class="fas fa-graduation-cap"></i></div></div>
+                <div class="menu-item"><div class="po" v-on:click="mpo"><i class="fas fa-folder"></i></div></div>
+                <div class="menu-item"><div class="co" v-on:click="mco"><i class="far fa-check-square"></i></div></div>
+                <div class="menu-item"><div class="im" v-on:click="mim"><i class="far fa-image"></i></div></div>
+
+                <div class="menu-item"><div class="ad" v-on:click="mad"><i class="fas fa-user-cog"></i></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/js.js"></script>
+</body>
+</html>

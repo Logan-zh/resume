@@ -27,7 +27,7 @@
     $port = $db->all('portfolio');
     $intro=$db->all('autobiographical');
     $pic=$db->all('picture');
-    
+    $edu=$db->all('education');
 ?>
 <div class="container border shadow p-4 bMain">
 <div class="row">
@@ -37,6 +37,7 @@
       <a class="list-group-item list-group-item-action" id="list-serj-list" data-toggle="list" href="#list-serj" >求職條件</a>
       <a class="list-group-item list-group-item-action" id="list-skill-list" data-toggle="list" href="#list-skill">技能</a>
       <a class="list-group-item list-group-item-action" id="list-exper-list" data-toggle="list" href="#list-exper">經歷</a>
+      <a class="list-group-item list-group-item-action" id="list-edu-list" data-toggle="list" href="#list-edu">學歷</a>
       <a class="list-group-item list-group-item-action" id="list-portf-list" data-toggle="list" href="#list-portf" >作品</a>
       <a class="list-group-item list-group-item-action" id="list-autob-list" data-toggle="list" href="#list-autob" >自傳</a>
       <a class="list-group-item list-group-item-action" id="list-imgm-list" data-toggle="list" href="#list-imgm" >圖片管理</a>
@@ -47,7 +48,7 @@
         <div class="tab-pane fade show active" id="list-info">
             <form action="info_save.php" method='post' enctype="multipart/form-data">
                 <label for="name">name:</label><input class="form-control" id="name" type="text" name="name" value="<?=($information[0]['name'])?>">
-                <label for="image">image:</label><div><img style="width:100px" src="../<?=($information[0]['image'])?>"></div>
+                <label for="image">image:</label><div><img style="width:100px" src="../image/<?=($information[0]['image'])?>"></div>
                 <input type="file" name='image' id='image'>
                 <label style="display:block;" for="email">email:</label><input class="form-control" id="email" type="text" name="email" value="<?=($information[0]['email'])?>">
                 <label for="phone">phone:</label><input class="form-control" id="phone" type="text" name="phone" value="<?=($information[0]['phone'])?>">
@@ -97,6 +98,7 @@
               <form action="exp_save.php" method='post'>
               <div class="row col-12">
                 <input class='border-0 form-control bg-light' type="text" name='id' value='<?=$rows['id']?>' readonly>
+                <div class="col-12 input-control"><label for="">img：</label><input class='form-control' type="text" name="img" value="<?=$rows['img']?>"></div>
                 <div class="col-12 input-control"><label for="">company：</label><input class='form-control' type="text" name="company" value="<?=$rows['company']?>"></div>
                 <div class="col-12 input-control"><label for="">JobTitle：</label><input class='form-control' type="text" name="JobTitle" value="<?=$rows['JobTitle']?>"></div>
                 <div class="col-12 input-control"><label for="">content：</label><textarea class='form-control' name="content" cols="10" rows="5"><?=$rows['content']?></textarea></div>
@@ -105,6 +107,29 @@
                 <div class="col-1 input-control"><label for="">display：</label><input class='form-control' type="checkbox" name="display" value="1" <?=($rows['display']==1)?'checked':''?>></div>
                 <div class="col-3 row align-items-end"><input class='btn btn-primary' type="submit" value='儲存'>
                 <a class='btn btn-danger ml-2' href="del.php?table=experience&id=<?=$rows['id']?>">刪除</a></div>
+              </div>
+              </form>
+              <?php } ?>
+              <hr class='alert-dark'>
+        </div>
+
+        <div class="tab-pane fade" id="list-edu">
+          <div class="col-12">
+          <button onclick='addEdu()' class='btn btn-primary float-right mb-3'>新增</button>
+          </div>
+            <?php
+              foreach($edu as $rows){ ?>
+              <form action="edu_save.php" method='post'>
+              <div class="row col-12">
+                <input class='border-0 form-control bg-light' type="text" name='id' value='<?=$rows['id']?>' readonly>
+                <div class="col-12 input-control"><label for="">img：</label><input class='form-control' type="text" name="img" value="<?=$rows['img']?>"></div>
+                <div class="col-12 input-control"><label for="">school：</label><input class='form-control' type="text" name="school" value="<?=$rows['school']?>"></div>
+                <div class="col-12 input-control"><label for="">title：</label><input class='form-control' type="text" name="title" value="<?=$rows['title']?>"></div>
+                <div class="col-12 input-control"><label for="">department：</label><textarea class='form-control' name="department" cols="10" rows="5"><?=$rows['department']?></textarea></div>
+                <div class="col-4 input-control"><label for="">display：</label><input class='form-control' type="text" name="display" value="<?=$rows['display']?>"></div>
+              
+                <div class="col-3 row align-items-end"><input class='btn btn-primary' type="submit" value='儲存'>
+                <a class='btn btn-danger ml-2' href="del.php?table=education&id=<?=$rows['id']?>">刪除</a></div>
               </div>
               </form>
               <?php } ?>
@@ -127,6 +152,7 @@
         </div>
 
         <div class="tab-pane fade" id="list-autob">
+          <button class="btn btn-outline-primary float-right" onclick="addAuto()">新增</button>
                 <?php foreach($intro as $v){ ?>
               <form action="../api/intro.php" method='POST'>
                 <textarea style='width:100%;height:200px;' name="content"><?=$v['content']?></textarea>
@@ -134,6 +160,7 @@
                   <input type="hidden" name="id" value="<?=$v['id']?>">
                   <h3 class='ml-auto'>顯示</h3>
                   <div class="col-1"><input class='form-control' type="checkbox" name="display" <?=($v['display']==1)?'checked':''?>></div>
+                  <a href="javascript:deleAuto(<?=$v['id']?>)">刪除</a>
                   <input class='btn btn-outline-primary m-2' type="submit" value="修改">
                 </div>
               </form>
@@ -146,6 +173,7 @@
           <?php foreach($pic as $v){ ?>
               <div class="col-sm-12 col-md-6 col-lg-3">
                 <img style="width:200px;height:200px" src="../image/<?=$v['name']?>">
+                <p><?=$v['name']?></p>
                 <input type="checkbox" name="del[]" value="<?=$v['id']?>">刪除
               </div>
               <?php } ?>
@@ -174,36 +202,66 @@
   function addPort(){
   $('#list-portf').append($("<form action='port_save.php' method='post'><div class='input-group row mb-2'><label class='col-2' for=''>title：</label><input class='form-control col-10' name='title' type='text' value=''></div><div class='input-group row mb-2'><label class='col-2' for=''>image：</label><input class='form-control col-10' name='image' type='text' value=''></div><div class='input-group row mb-2'><label class='col-2' for=''>url：</label><input class='form-control col-10' name='url' type='text' value=''></div><div class='input-group row mb-2'><label class='col-2' for=''>briefIntroduction：</label><input class='form-control col-10' name='briefIntroduction'  type='text' value=''></div><div class='input-group row mb-2'><label class='col-2' for=''>display：</label><input class='form-control col-10' name='display' type='checkbox' value='1'></div><div class='input-group mb-2'><input class='btn btn-primary ml-auto' type='submit' value='儲存'></div></form>"));
   }
+  function addAuto(){
+    $('#list-autob').append($("<form action='../api/intro.php' method='POST'><textarea style='width:100%;height:200px;' name='content'></textarea><div class='input-group'><h3 class='ml-auto'>顯示</h3><div class='col-1'><input class='form-control' type='checkbox' name='display'></div><input class='btn btn-outline-primary m-2' type='submit' value='送出'></div></form>"));
+  }
+  function deleAuto(id){
+    console.log(id);
+    fetch('../api/intro.php',{
+      method:'del',
+      body:JSON.stringify({
+        'id':id
+      })
+    }
+    ).then(res=>{
+      return res.json();
+    }).then(res=>{
+      console.log(res);
+      let t=new Date();
+      console.log(t);
+      t.setSeconds(t.getSeconds()+2);
+      location.reload();
+    }).catch(err=>{console.log(err)});
+  }
+  function addEdu(){
+    $('#list-edu').append($("<form action='edu_save.php' method='post'><div class='row col-12'><div class='col-12 input-control'><label for=''>img：</label><input class='form-control' type='text' name='img' value=''></div><div class='col-12 input-control'><label for=''>school：</label><input class='form-control' type='text' name='school' value=''></div><div class='col-12 input-control'><label for=''>title：</label><input class='form-control' type='text' name='title' value=''></div><div class='col-12 input-control'><label for=''>department：</label><textarea class='form-control' name='department' cols='10' rows='5'></textarea></div><div class='col-4 input-control'><label for=''>display：</label><input class='form-control' type='text' name='display' value=''></div><div class='col-3 row align-items-end'><input class='btn btn-primary' type='submit' value='儲存'></div></form>"));
+  }
 
   let cook = document.cookie;
   let t = cook.split(';');
-  let p = t[0].split('=');
-  let c = t[1].split('=');
- 
-  switch(p[1]){
-    case 'info':
-      $('#list-info-list').click();
-    break;
-    case 'serj':
-      $('#list-serj-list').click();
-    break;
-    case 'skill':
-      $('#list-skill-list').click();
-    break;
-    case 'exper':
-      $('#list-exper-list').click();
-    break;
-    case 'portf':
-      $('#list-portf-list').click();
-    break;
-  }
-  switch(c[1]){
-    case 'auto':
-      $('#list-autob-list').click();
-    break;
-    case 'imgm':
-      $('#list-imgm-list').click();
-    break;
+  if(t.length>1){
+    let p = t[0].split('=');
+    let c = t[1].split('=');
+   
+    switch(p[1]){
+      case 'info':
+        $('#list-info-list').click();
+      break;
+      case 'serj':
+        $('#list-serj-list').click();
+      break;
+      case 'skill':
+        $('#list-skill-list').click();
+      break;
+      case 'exper':
+        $('#list-exper-list').click();
+      break;
+      case 'portf':
+        $('#list-portf-list').click();
+      break;
+      case 'edu':
+        $('#list-edu-list').click();
+      break;
+    }
+    switch(c[1]){
+      case 'auto':
+        $('#list-autob-list').click();
+      break;
+      case 'imgm':
+        $('#list-imgm-list').click();
+      break;
+    }
+
   }
 </script> 
 

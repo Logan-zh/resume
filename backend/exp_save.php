@@ -10,6 +10,7 @@
         'startTime'=>$_POST['startTime'],
         'endTime'=>$_POST['endTime'],
         'display'=>(!empty($_POST['display']))?$_POST['display']:0,
+        'img'=>(!empty($_POST['img']))?$_POST['img']:'',
     ];
     $DB->save('experience',$data);
     setcookie('page','exper',time()+2);

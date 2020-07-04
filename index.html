@@ -96,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio col-12 row align-items-center" v-if="portfolioShow">
+                    <div class="portfolio col-12 row align-items-center mb-3" v-if="portfolioShow">
                         <h3>作品集</h3>
                         <div class="portBox" v-for="(item,index) in portfolio">
                             <div class="list">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div class="condition col-12 row align-items-center" v-if="jbconShow">
+                    <div class="condition col-12 " v-if="jbconShow">
                         <h3>求職條件</h3>
                         <div class="table">
                             <div class="tr">
@@ -131,6 +131,13 @@
                         <img v-for="(item ,index) in img" v-bind:src="'image/'+item.name">
                     </div>
 
+                    <div class="auto col-12 row align-items-center" v-if="intr.length && intrShow">
+                        <h3>自傳</h3>
+                        <div class="auto-item" v-for="(item,index) in intr">
+                            {{item.content}}
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="menu col-1">
@@ -139,6 +146,7 @@
                 <div class="menu-item"><div class="ex" v-on:click="mex"><i class="fas fa-briefcase"></i></div></div>
                 <div class="menu-item"><div class="ed" v-on:click="med"><i class="fas fa-graduation-cap"></i></div></div>
                 <div class="menu-item"><div class="po" v-on:click="mpo"><i class="fas fa-folder"></i></div></div>
+                <div class="menu-item"><div class="au" v-on:click="mau"><i class="fas fa-book"></i></div></div>
                 <div class="menu-item"><div class="co" v-on:click="mco"><i class="far fa-check-square"></i></div></div>
                 <div class="menu-item"><div class="im" v-on:click="mim"><i class="far fa-image"></i></div></div>
 

@@ -19,6 +19,7 @@ let vue=new Vue({
         eduShow:true,
         intrShow:true,
         imgShow:false,
+        autoShow:true,
         t:'',
     },
     methods:{
@@ -31,13 +32,14 @@ let vue=new Vue({
             this.eduShow=true;
             this.intrShow=true;
             this.imgShow=false;
+            this.autoShow=true;
             if(this.t!=''){
                 clearInterval(this.t);
             }
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.information').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.information').offsetTop/10))){
@@ -46,6 +48,8 @@ let vue=new Vue({
                     clearInterval(this.t);
                 }
             },1)
+            $('.menu-item').removeClass('__active');
+            $('.in').parent('.menu-item').addClass('__active');
         },
         mex:function(){
             this.informationShow=true;
@@ -56,13 +60,14 @@ let vue=new Vue({
             this.eduShow=true;
             this.intrShow=true;
             this.imgShow=false;
+            this.autoShow=true;
             if(this.t!=''){
                 clearInterval(this.t);
             }
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.exp').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.exp').offsetTop/10))){
@@ -71,6 +76,8 @@ let vue=new Vue({
                     clearInterval(this.t);
                 }
             },1)
+            $('.menu-item').removeClass('__active');
+            $('.ex').parent('.menu-item').addClass('__active');
         },
         msk:function(){
             this.informationShow=true;
@@ -81,13 +88,14 @@ let vue=new Vue({
             this.eduShow=true;
             this.intrShow=true;
             this.imgShow=false;
+            this.autoShow=true;
             if(this.t!=''){
                 clearInterval(this.t);
             }
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.skills').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.skills').offsetTop/10))){
@@ -96,6 +104,8 @@ let vue=new Vue({
                     clearInterval(this.t);
                 }
             },1)
+            $('.menu-item').removeClass('__active');
+            $('.sk').parent('.menu-item').addClass('__active');
         },
         med:function(){
             this.informationShow=true;
@@ -106,13 +116,14 @@ let vue=new Vue({
             this.eduShow=true;
             this.intrShow=true;
             this.imgShow=false;
+            this.autoShow=true;
             if(this.t!=''){
                 clearInterval(this.t);
             }
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.education').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.education').offsetTop/10))){
@@ -121,6 +132,8 @@ let vue=new Vue({
                     clearInterval(this.t);
                 }
             },1)
+            $('.menu-item').removeClass('__active');
+            $('.ed').parent('.menu-item').addClass('__active');
         },
         mpo:function(){
             this.informationShow=true;
@@ -131,13 +144,14 @@ let vue=new Vue({
             this.eduShow=true;
             this.intrShow=true;
             this.imgShow=false;
+            this.autoShow=true;
             if(this.t!=''){
                 clearInterval(this.t);
             }
             this.t = setInterval(()=>{
                 if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.portfolio').offsetTop/10))){
                     document.querySelector('.main').scrollTop+=10;
-                    if((document.querySelector('.main').offsetHeight-document.querySelector('.main').scrollTop)<0){
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
                         clearInterval(this.t);
                     }
                 }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.portfolio').offsetTop/10))){
@@ -146,6 +160,8 @@ let vue=new Vue({
                     clearInterval(this.t);
                 }
             },1)
+            $('.menu-item').removeClass('__active');
+            $('.po').parent('.menu-item').addClass('__active');
         },
         mco:function(){
             this.informationShow=false;
@@ -156,9 +172,12 @@ let vue=new Vue({
             this.eduShow=false;
             this.intrShow=false;
             this.imgShow=false;
+            this.autoShow=false;
             if(this.t!=''){
                 clearInterval(this.t);
             }
+            $('.menu-item').removeClass('__active');
+            $('.co').parent('.menu-item').addClass('__active');
         },
         mim:function(){
             this.informationShow=false;
@@ -169,17 +188,51 @@ let vue=new Vue({
             this.eduShow=false;
             this.intrShow=false;
             this.imgShow=true;
+            this.autoShow=false;
             if(this.t!=''){
                 clearInterval(this.t);
             }
+            $('.menu-item').removeClass('__active');
+            $('.im').parent('.menu-item').addClass('__active');
+        },
+        mau:function(){
+            this.informationShow=true;
+            this.experienceShow=true;
+            this.portfolioShow=true;
+            this.skillSShow=true;
+            this.jbconShow=false;
+            this.eduShow=true;
+            this.intrShow=true;
+            this.imgShow=false;
+            this.autoShow=true;
+            if(this.t!=''){
+                clearInterval(this.t);
+            }
+            if(this.t!=''){
+                clearInterval(this.t);
+            }
+            this.t = setInterval(()=>{
+                if(Math.floor((document.querySelector('.main').scrollTop)/10) < Math.floor((document.querySelector('.auto').offsetTop/10))){
+                    document.querySelector('.main').scrollTop+=10;
+                    if((document.querySelector('.main').scrollHeight-document.querySelector('.main').scrollTop)<=750){
+                        clearInterval(this.t);
+                    }
+                }else if(Math.floor((document.querySelector('.main').scrollTop)/10) > Math.floor((document.querySelector('.auto').offsetTop/10))){
+                    document.querySelector('.main').scrollTop-=10;
+                }else{
+                    clearInterval(this.t);
+                }
+            },1)
+            $('.menu-item').removeClass('__active');
+            $('.au').parent('.menu-item').addClass('__active');
         },
         mad:function(){
             window.location.href='backend/index.php';
         },
     },
     beforeCreate: function(){
-        fetch('api/intro.php?aut=1',{method:'GET'}).then(res=>{
-            return res.json()
+        fetch('api/intro.php',{method:'GET'}).then(res=>{
+            return res.json();
         }).then(res=>{
             this.information=res.information;
             this.experience=res.experience;

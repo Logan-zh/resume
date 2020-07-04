@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-07-04 11:01:32
+-- 產生時間： 2020-07-04 17:52:04
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.6
 
@@ -38,7 +38,7 @@ CREATE TABLE `autobiographical` (
 --
 
 INSERT INTO `autobiographical` (`id`, `content`, `display`) VALUES
-(2, '某些如下目前通知遺憾現象集體士兵光碟一直大學生一種顏色，前面相同有一定，輕易工廠表現皮膚年輕基層身份喜愛一週，一場不再減少讓你研究生把他案例，並在也就是反對基礎民族，日期特殊，現代動態測試種類，台南。', 0);
+(2, '某些如下目前通知遺憾現象集體士兵光碟一直大學生一種顏色，前面相同有一定，輕易工廠表現皮膚年輕基層身份喜愛一週，一場不再減少讓你研究生把他案例，並在也就是反對基礎民族，日期特殊，現代動態測試種類，台南。', 1);
 
 -- --------------------------------------------------------
 
@@ -51,15 +51,16 @@ CREATE TABLE `education` (
   `school` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `department` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
+  `img` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `education`
 --
 
-INSERT INTO `education` (`id`, `school`, `title`, `department`, `img`) VALUES
-(1, '景文科技大學', '商學學士', '理財與稅務規劃系', 'jin.png');
+INSERT INTO `education` (`id`, `school`, `title`, `department`, `img`, `display`) VALUES
+(1, '景文科技大學', '商學學士', '理財與稅務規劃系', 'jin.png', 1);
 
 -- --------------------------------------------------------
 
@@ -290,13 +291,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `autobiographical`
 --
 ALTER TABLE `autobiographical`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `education`
 --
 ALTER TABLE `education`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `experience`

@@ -128,3 +128,9 @@ h3{
 .introduction .hr:nth-last-child(-n+2){
     margin-top:260px;
 }
+.condition{
+    width:550px;
+}
+.__active{
+    background:#fdcb6e !important;
+}

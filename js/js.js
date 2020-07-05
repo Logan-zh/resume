@@ -21,6 +21,7 @@ let vue=new Vue({
         imgShow:false,
         autoShow:true,
         t:'',
+        scro:0,
     },
     methods:{
         min:function(){
@@ -229,6 +230,37 @@ let vue=new Vue({
         mad:function(){
             window.location.href='backend/index.php';
         },
+        getScro(){
+            this.scro=document.querySelector('.main').scrollTop;
+        },
+    },
+    watch:{
+        scro:function(){
+            if(this.scro-10<document.querySelector('.information').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.in').parent('.menu-item').addClass('__active');
+            }
+            else if(this.scro-10<document.querySelector('.skills').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.sk').parent('.menu-item').addClass('__active');
+            }
+            else if(this.scro-10<document.querySelector('.exp').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.ex').parent('.menu-item').addClass('__active');
+            }
+            else if(this.scro-10<document.querySelector('.education').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.ed').parent('.menu-item').addClass('__active');
+            }
+            else if(this.scro-10<document.querySelector('.portfolio').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.po').parent('.menu-item').addClass('__active');
+            }
+            else if(this.scro-10<document.querySelector('.auto').offsetTop){
+                $('.menu-item').removeClass('__active');
+                $('.au').parent('.menu-item').addClass('__active');
+            }
+        }
     },
     beforeCreate: function(){
         fetch('api/intro.php',{method:'GET'}).then(res=>{

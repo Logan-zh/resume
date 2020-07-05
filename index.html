@@ -28,7 +28,7 @@
                     <a v-bind:href="('mailto:'+information[0].email)"><i class="far fa-envelope"></i></a>
                 </div>
             </div>
-            <div class="col-8 main row justify-content-center">
+            <div class="col-8 main row justify-content-center" v-on:scroll="getScro">
                 <div class="row">
                     <div class="information col-12 flex-column row align-items-center" v-if="informationShow">
                         <h3>個人資料</h3>

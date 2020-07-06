@@ -134,3 +134,56 @@ h3{
 .__active{
     background:#fdcb6e !important;
 }
+
+@media screen and (max-width: 1000px) {
+    .introduction{
+        background:#ccc;
+        min-width: 100%;
+        flex-wrap: wrap;
+    }
+    .introduction .icon{
+       
+    }
+    .introduction .icon img{
+        height:50px;
+        width:50px;
+    }
+    .introduction .hr:nth-last-child(-n+2){
+        margin-top:0px;
+    }
+    .main{
+        min-width:100%;
+        margin-left:-25%;
+        padding-left: 20%;
+        padding-right: 0;
+    }
+    .exp img,.education img{
+        display:none;
+    }
+    .image img{
+        width:100%;
+    }
+    .condition{
+        width:80%;
+    }
+    .condition .table .td{
+        flex:0 0 40%;
+    }
+    .menu .menu-item{
+        width:50px;
+        font-size: 1rem;
+    }
+    .login{
+        width:100%;
+    }
+    .login .row .btn{
+        
+    }
+    .login .row{
+        width:100%;
+        margin:10%;
+    }
+    .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
+        flex:0 0 100%;
+    }
+  }

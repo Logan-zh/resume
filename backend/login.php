@@ -28,10 +28,9 @@
         }
         if(empty($_SESSION['admin'])){
     ?>
-    <div class="container">
+    <div class="login container">
     <div class="row">
         <h3>後臺登入</h3>
-        <a class='ml-auto btn btn-outline-dark' href="../index.html">返回</a>
     </div>
         <div class="row justify-content-center mt-5">
             <div class='border shadow p-3 main'>
@@ -40,6 +39,7 @@
                     <div class="input-control"><label for="pas">密碼：</label><input id='pas' type="password" name='pas' value='111'></div>
                     <span><?=(!empty($_GET['msg']))?$_GET['msg']:''?></span>
                     <input class="float-right btn btn-primary" type="submit" value="送出">
+                    <a class='float-left float-right btn btn-outline-dark' href="../index.html">返回</a>
                 </form>
             </div>
         </div>

@@ -174,6 +174,7 @@
               <div class="col-sm-12 col-md-6 col-lg-3">
                 <img style="width:200px;height:200px" src="../image/<?=$v['name']?>">
                 <p><?=$v['name']?></p>
+                <input type="checkbox" name='display[]' value="<?=$v['id']?>" <?=($v['display']==1)?'checked':''?>>顯示
                 <input type="checkbox" name="del[]" value="<?=$v['id']?>">刪除
               </div>
               <?php } ?>

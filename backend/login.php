@@ -16,10 +16,10 @@
         if(!empty($_POST)){
             if(preg_match("/\w/",$_POST['acc'])){
                 if(($DB->num('user',['acc'=>$_POST['acc']])==0)){
-                    to('login.php');
+                    to("login.php?msg=無此帳號");
                 }else{
                     if(($DB->find('user',['acc'=>$_POST['acc'],'pas'=>hash('md5',$_POST['pas'])])==0)){
-                        to('login.php');
+                        to("login.php?msg=密碼錯誤");
                     }else{
                         $_SESSION['admin'] = 1;
                     }
@@ -36,8 +36,9 @@
         <div class="row justify-content-center mt-5">
             <div class='border shadow p-3 main'>
                 <form action="login.php" method='post'>
-                    <div class="input-control"><label for="acc">帳號：</label><input id='acc' type="text" name='acc'></div>
-                    <div class="input-control"><label for="pas">密碼：</label><input id='pas' type="password" name='pas'></div>
+                    <div class="input-control"><label for="acc">帳號：</label><input id='acc' type="text" name='acc' value='admin'></div>
+                    <div class="input-control"><label for="pas">密碼：</label><input id='pas' type="password" name='pas' value='111'></div>
+                    <span><?=(!empty($_GET['msg']))?$_GET['msg']:''?></span>
                     <input class="float-right btn btn-primary" type="submit" value="送出">
                 </form>
             </div>

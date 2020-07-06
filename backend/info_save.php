@@ -6,7 +6,7 @@
     $data = [
         'id' => 1,
         'name' => $_POST['name'],
-        'image' => (!empty($_FILES['image']['name']))?'image/'.$_FILES['image']['name']:$img['image'],
+        'image' => (!empty($_FILES['image']['name']))?$_FILES['image']['name']:$img['image'],
         'email' => $_POST['email'],
         'phone' => $_POST['phone'],
         'birthday' => $_POST['birthday'],

@@ -79,7 +79,7 @@
                   <input type="hidden" name="id[]" value="<?=$row['id']?>">
                   <label>name：</label><input class="form-control" type="text" name="name[]" value="<?=$row['name']?>">
                   <label class="ml-2">sort：</label><input class="form-control" type="text" name="sort[]" value="<?=$row['sort']?>">
-                  <input class='form-control col-1' type="checkbox" name='display[]' value='<?=$row['id']?>' <?=($row['display']==1)?'checked':''?> ><span>顯示</span>
+                  <label for="s<?=$row['id']?>" class='space'><input class='sd' id="s<?=$row['id']?>" type="checkbox" name='display[]' value='<?=$row['id']?>' <?=($row['display']==1)?'checked':''?> ><span class='circle'></span></label>
                   <input class='form-control col-1' type="checkbox" name="del[]" value='<?=$row['id']?>'><span>刪除</span>
                 </div>
               <?php
@@ -104,7 +104,7 @@
                 <div class="col-12 input-control"><label for="">content：</label><textarea class='form-control' name="content" cols="10" rows="5"><?=$rows['content']?></textarea></div>
                 <div class="col-4 input-control"><label for="">startTime：</label><input class='form-control' type="text" name="startTime" value="<?=$rows['startTime']?>"></div>
                 <div class="col-4 input-control"><label for="">endTime：</label><input class='form-control' type="text" name="endTime" value="<?=$rows['endTime']?>"></div>
-                <div class="col-1 input-control"><label for="">display：</label><input class='form-control' type="checkbox" name="display" value="1" <?=($rows['display']==1)?'checked':''?>></div>
+                <div class="col-1 input-control mr-4">display：<label class='space' for="ex<?=$rows['id']?>"><input id="ex<?=$rows['id']?>" class='sd form-control' type="checkbox" name="display" value="1" <?=($rows['display']==1)?'checked':''?>><span class='circle'></span></label></div>
                 <div class="col-3 row align-items-end"><input class='btn btn-primary' type="submit" value='儲存'>
                 <a class='btn btn-danger ml-2' href="del.php?table=experience&id=<?=$rows['id']?>">刪除</a></div>
               </div>
@@ -126,7 +126,7 @@
                 <div class="col-12 input-control"><label for="">school：</label><input class='form-control' type="text" name="school" value="<?=$rows['school']?>"></div>
                 <div class="col-12 input-control"><label for="">title：</label><input class='form-control' type="text" name="title" value="<?=$rows['title']?>"></div>
                 <div class="col-12 input-control"><label for="">department：</label><textarea class='form-control' name="department" cols="10" rows="5"><?=$rows['department']?></textarea></div>
-                <div class="col-4 input-control"><label for="">display：</label><input class='form-control' type="text" name="display" value="<?=$rows['display']?>"></div>
+                <div class="col-4 input-control">display：<label class='space' for="edu<?=$rows['id']?>"><input id='edu<?=$rows['id']?>' class='form-control sd' type="checkbox" name="display" value="<?=($rows['display']==1)?1:0?>"><span class='circle'></span></label></div>
               
                 <div class="col-3 row align-items-end"><input class='btn btn-primary' type="submit" value='儲存'>
                 <a class='btn btn-danger ml-2' href="del.php?table=education&id=<?=$rows['id']?>">刪除</a></div>
@@ -145,8 +145,10 @@
                   <div class="input-group row mb-2"><label class='col-2' for="">image：</label><input class='form-control col-10' name='image' type="text" value='<?=$value['image']?>'></div>
                   <div class="input-group row mb-2"><label class='col-2' for="">url：</label><input class='form-control col-10' name='url' type="text" value='<?=$value ['url']?>'></div>
                   <div class="input-group row mb-2"><label class='col-2' for="">briefIntroduction：</label><input class='form-control col-10' name='briefIntroduction'  type="text" value='<?=$value['briefIntroduction']?>'></div>
-                  <div class="input-group row mb-2"><label class='col-2' for="">display：</label><input class='form-control col-10' name='display' type="checkbox" value='1' <?=($rows['display']==1)?'checked':''?>></div>
-                  <div class="input-group mb-2"><input class='btn btn-primary ml-auto' type="submit" value="儲存"></div>
+                  <div class="input-group row mb-2"><label class='col-2' for="">display：</label><input class='form-control col-1' name='display' type="checkbox" value='1' <?=($rows['display']==1)?'checked':''?>>
+                    <a href="del.php?table=portfolio&id=<?=$value['id']?>" class='btn btn-outline-danger'>刪除</a>
+                    <input class='btn btn-primary ml-auto' type="submit" value="儲存">
+                  </div>
                 </form>
                 <?php } ?>
         </div>
@@ -160,8 +162,8 @@
                   <input type="hidden" name="id" value="<?=$v['id']?>">
                   <h3 class='ml-auto'>顯示</h3>
                   <div class="col-1"><input class='form-control' type="checkbox" name="display" <?=($v['display']==1)?'checked':''?>></div>
-                  <a href="javascript:deleAuto(<?=$v['id']?>)">刪除</a>
-                  <input class='btn btn-outline-primary m-2' type="submit" value="修改">
+                  <a class='btn btn-outline-danger' href="javascript:deleAuto(<?=$v['id']?>)" style='height:40px;'>刪除</a>
+                  <input class='btn btn-outline-primary ml-2' style='vertical-align:top' type="submit" value="修改">
                 </div>
               </form>
               <?php } ?>

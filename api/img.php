@@ -42,12 +42,5 @@
             }
         }
         to('../backend/index.php');
-    }else{
-        $rows=$db->all('picture');
-        foreach($rows as $row){
-            $row['display']=0;
-            $db->save('picture',$row);
-        }
-        to('../backend/index.php');
     }
 ?>

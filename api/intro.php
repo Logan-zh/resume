@@ -1,5 +1,6 @@
 <?php
     include_once '../DB.php';
+
     $db=new DB;
     if($_SERVER['REQUEST_METHOD']=="GET"){
         $information = $db->all('information');
@@ -7,10 +8,11 @@
         $portfolio = $db->all('portfolio');
         $skillS = $db->all('skill',['display'=>1],'group by `sort` order by `id`');
         $skill = $db->all('skill');
-        $jbcon = $db->all('jobCondition');
+        $jbcon = $db->all('jobcondition');
+       //3 echo "HI";
         $edu = $db->all('education');
         $text = $db->all('autobiographical',['display'=>1]);
-    
+        
         $data['information']=$information;
         $data['experience']=$experience;
         $data['portfolio']=$portfolio;
@@ -18,7 +20,7 @@
         $data['skill']=$skill;
         $data['jbcon']=$jbcon;
         $data['edu']=$edu;
-        $data['intr']=$text;
+        $data['intro']=$text;
         echo json_encode($data);
     }
     

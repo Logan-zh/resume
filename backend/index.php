@@ -126,7 +126,7 @@
                 <div class="col-12 input-control"><label for="">school：</label><input class='form-control' type="text" name="school" value="<?=$rows['school']?>"></div>
                 <div class="col-12 input-control"><label for="">title：</label><input class='form-control' type="text" name="title" value="<?=$rows['title']?>"></div>
                 <div class="col-12 input-control"><label for="">department：</label><textarea class='form-control' name="department" cols="10" rows="5"><?=$rows['department']?></textarea></div>
-                <div class="col-4 input-control">display：<label class='space' for="edu<?=$rows['id']?>"><input id='edu<?=$rows['id']?>' class='form-control sd' type="checkbox" name="display" value="<?=($rows['display']==1)?1:0?>"><span class='circle'></span></label></div>
+                <div class="col-4 input-control">display：<label class='space' for="edu<?=$rows['id']?>"><input id='edu<?=$rows['id']?>' class='form-control sd' type="checkbox" name="display" value="1" <?=($rows['display']==1)?'checked':''?>><span class='circle'></span></label></div>
               
                 <div class="col-3 row align-items-end"><input class='btn btn-primary' type="submit" value='儲存'>
                 <a class='btn btn-danger ml-2' href="del.php?table=education&id=<?=$rows['id']?>">刪除</a></div>

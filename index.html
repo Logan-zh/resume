@@ -131,10 +131,11 @@
                         <img v-for="(item ,index) in img" v-bind:src="'image/'+item.name">
                     </div>
 
-                    <div class="auto col-12 row align-items-center" v-if="intr.length && intrShow">
+                    <div class="auto col-12 row align-items-center"v-if="intrShow">
                         <h3>自傳</h3>
                         <div class="auto-item" v-for="(item,index) in intr">
                             {{item.content}}
+                            {{intr[0].content}}
                         </div>
                     </div>
 

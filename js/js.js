@@ -266,6 +266,7 @@ let vue=new Vue({
         fetch('api/intro.php',{method:'GET'}).then(res=>{
             return res.json();
         }).then(res=>{
+            console.log(res)
             this.information=res.information;
             this.experience=res.experience;
             this.portfolio=res.portfolio;
@@ -273,7 +274,7 @@ let vue=new Vue({
             this.skill=res.skill;
             this.jbcon=res.jbcon;
             this.edu=res.edu;
-            this.intr=res.intr;
+            this.intr=res.intro;
         }).catch(error=>console.log(error));
 
         fetch('api/img.php?pic=1').then(res=>{

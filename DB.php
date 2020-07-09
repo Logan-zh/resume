@@ -61,7 +61,6 @@
                 $values = array_values($arg);
                 $sql = "insert into `$table` (`".implode('`,`',$keys)."`) values ('".implode("','",$values)."')";
             }
-            echo $sql;
             return $this->pdo->exec($sql);
         }
         function del($table,$id){

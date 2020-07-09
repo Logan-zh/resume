@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
     <title>登入</title>
 </head>
 <body>
@@ -28,22 +29,20 @@
         }
         if(empty($_SESSION['admin'])){
     ?>
-    <div class="login container">
-    <div class="row">
-        <h3>後臺登入</h3>
-    </div>
-        <div class="row justify-content-center mt-5">
-            <div class='border shadow p-3 main'>
-                <form action="login.php" method='post'>
-                    <div class="input-control"><label for="acc">帳號：</label><input id='acc' type="text" name='acc' value='admin'></div>
-                    <div class="input-control"><label for="pas">密碼：</label><input id='pas' type="password" name='pas' value='111'></div>
-                    <span><?=(!empty($_GET['msg']))?$_GET['msg']:''?></span>
-                    <input class="float-right btn btn-primary" type="submit" value="送出">
-                    <a class='float-left float-right btn btn-outline-dark' href="../index.html">返回</a>
-                </form>
+    <form action="login.php" method='post'>
+        <div class="login">
+            <div class='border shadow p-3 row flex-column align-items-center'>
+                <div class='mt-3'><i class="mr-3 fa fa-user" aria-hidden="true"></i><input id='acc' type="text" name='acc' value='admin'></div>
+                <div class='mt-3'><i class="mr-3 fa fa-unlock-alt" aria-hidden="true"></i><input id='pas' type="password" name='pas' value='111'></div>
+                <span><?=(!empty($_GET['msg']))?$_GET['msg']:''?></span>
+                <div class='mt-3'>
+                    <a class='mr-3 btn btn-outline-dark' href="../index.html">返回</a>
+                    <a class='mr-3 btn btn-outline-dark' href="sign_up.php">註冊</a>
+                    <input class="btn btn-primary" type="submit" value="送出">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <?php 
         }else{
         to('index.php');

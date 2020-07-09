@@ -160,6 +160,11 @@ h3{
     background:#36f;
     transform:translateX(-5px);
 }
+.login{
+    max-width:400px;
+    margin:auto;
+    font-size:1.5rem;
+}
 
 @media screen and (max-width: 1000px) {
     .introduction{
@@ -178,10 +183,9 @@ h3{
         margin-top:0px;
     }
     .main{
-        min-width:100%;
-        margin-left:-25%;
-        padding-left: 20%;
-        padding-right: 0;
+        min-width:90%;
+        padding-left: 10%;
+        left:-17px;
     }
     .exp img,.education img{
         display:none;
@@ -195,21 +199,11 @@ h3{
     .condition .table .td{
         flex:0 0 40%;
     }
+    .menu{
+        left:-18px;
+    }
     .menu .menu-item{
         width:50px;
         font-size: 1rem;
-    }
-    .login{
-        width:100%;
-    }
-    .login .row .btn{
-        
-    }
-    .login .row{
-        width:100%;
-        margin:10%;
-    }
-    .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
-        flex:0 0 100%;
     }
   }
